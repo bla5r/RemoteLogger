@@ -51,6 +51,8 @@ Smali code to send data to your server:
 
 # Server-side
 
+I developed a server monitor for this logger, you can check it out here: https://github.com/bla5r/RemoteMonitor 
+
 When you call the flushing method, the class send a POST request to your server with all of your data in the body (JSON format). This is an example of output:
 ```
 	{
