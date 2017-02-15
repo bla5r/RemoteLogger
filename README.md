@@ -12,8 +12,8 @@ First of all, you have to decompile your Android app with APKTool (https://ibotp
 ```
 	./install.sh "http://url.com[:port]/"
 ```
-This code will generate your own logging smali class, with the URL you specialize.
-  + 2. Put the file named "RemoteLogger.smali" on your root source directory
+This script will generate your own logging smali class, with the URL you specialize.
+  + 2. Put all smali files in "out" directory on the decompile root source directory
   + 3. Inject smali method calls in the app source code (see section below for more details)
   + 4. Recompile the app with APKTool
   + 5. Align and sign APK file
