@@ -8,22 +8,16 @@ First of all, you have to decompile your Android app with APKTool (https://ibotp
 
 # Usage
 
-1.
-  + Execute installation script
+  + 1. Execute installation script
 ```
 	./install.sh "http://url.com[:port]/"
 ```
 This code will generate your own logging smali class, with the URL you specialize.
-2.
-  + Put the file named "RemoteLogger.smali" on your root source directory
-3.
-  + Inject smali method calls in the app source code (see section below for more details)
-4.
-  + Recompile the app with APKTool
-5.
-  + Align and sign APK file
-6.
-  + Install APK on your (virtual) device
+  + 2. Put the file named "RemoteLogger.smali" on your root source directory
+  + 3. Inject smali method calls in the app source code (see section below for more details)
+  + 4. Recompile the app with APKTool
+  + 5. Align and sign APK file
+  + 6. Install APK on your (virtual) device
 
 # Methods
 
@@ -54,3 +48,27 @@ Smali code to send data to your server:
 ```
 	invoke-static {}, LRemoteLogger;->flush()V
 ```
+
+# Server-side
+
+When you call the flushing method, the class send a POST request to your server with all of your data in the body (JSON format). This is an example of output:
+```
+	{
+		"ts": 1487180887,
+		"r": 12,
+		"vars": [{
+			"key": "auth_token",
+			"value": "ed735d55415bee976b771989be8f7005"
+		}, {
+			"key": "username",
+			"value": "root"
+		}],
+		"stack": [
+			"java.lang.Throwable ..."
+		]
+	}
+```
+  + "ts": Timestamp
+  + "r": Request number (increment at each request)
+  + "vars": All variable you logged
+  + "stack": All stack trace you logged
