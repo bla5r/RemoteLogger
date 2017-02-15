@@ -55,6 +55,7 @@ When you call the flushing method, the class send a POST request to your server 
 ```
 	{
 		"ts": 1487180887,
+		"exec": "123e4567-e89b-12d3-a456-426655440000",
 		"r": 12,
 		"vars": [{
 			"key": "auth_token",
@@ -69,6 +70,7 @@ When you call the flushing method, the class send a POST request to your server 
 	}
 ```
   + "ts": Timestamp
+  + "exec": Execution ID
   + "r": Request number (increment at each request)
   + "vars": All variable you logged
   + "stack": All stack trace you logged
