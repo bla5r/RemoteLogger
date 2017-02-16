@@ -8,7 +8,7 @@ First of all, you have to decompile your Android app with APKTool (https://ibotp
 
 # Usage
 
-  + 1. Execute installation script
+  + 1. Run installation script
 ```
 	./install.sh "http://url.com[:port]/"
 ```
@@ -21,7 +21,7 @@ This script will generate your own logging smali class, with the URL you special
 
 # Methods
 
-The logger stores any variable and stack trace you added until flushing.
+The logger stores any variables and stack traces you add until you flush.
 
 ## Variable
 
@@ -74,5 +74,5 @@ When you call the flushing method, the class send a POST request to your server 
   + "ts": Timestamp
   + "exec": Execution ID
   + "r": Request number (increment at each request)
-  + "vars": All variable you logged
-  + "stack": All stack trace you logged
+  + "vars": All variables you logged
+  + "stack": All stack traces you logged
