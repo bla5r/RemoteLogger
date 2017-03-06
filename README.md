@@ -4,7 +4,9 @@ Tool to make Android app re-engineering 3rd party easier. This project provides 
 
 # Requirements
 
-First of all, you have to decompile your Android app with APKTool (https://ibotpeaches.github.io/Apktool/). If you want to debug an app in a device out of your local network, you must have an internet reachable appliance with web server.
+First of all, you have to decompile your Android app with [APKTool](https://ibotpeaches.github.io/Apktool/ "APKTool"). If you want to debug an app in a device out of 
+your local 
+network, you must have an internet reachable appliance with web server.
 
 # Usage
 
@@ -51,7 +53,7 @@ Smali code to send data to your server:
 
 # Server-side
 
-I developed a server monitor for this logger, you can check it out here: https://github.com/bla5r/RemoteMonitor 
+I developed a server monitor for this logger, you can check it out [here](https://github.com/bla5r/RemoteMonitor "RemoteMonitor").
 
 When you call the flushing method, the class send a POST request to your server with all of your data in the body (JSON format). This is an example of output:
 ```
