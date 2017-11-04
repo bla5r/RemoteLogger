@@ -1,25 +1,23 @@
 # RemoteLogger
 
-Tool to make Android app re-engineering 3rd party easier. This project provides remote logging functions for smali source code.
+Tiny tool to make Android app re-engineering 3rd party easier. This project provides remote logging functions for smali source code.
 
 # Requirements
 
-First of all, you have to decompile your Android app with [APKTool](https://ibotpeaches.github.io/Apktool/ "APKTool"). If you want to debug an app in a device out of 
-your local 
-network, you must have an internet reachable appliance with web server.
+First of all, you have to decompile your Android app with [APKTool](https://ibotpeaches.github.io/Apktool/). Note that if you want to debug an app out of your local network, the device has to access WAN network and you must control an appliance reachable over Internet.
 
 # Usage
 
-  + 1. Run installation script
+  + Run installation script
 ```
 	./install.sh "http://url.com[:port]/"
 ```
-This script will generate your own logging smali class, with the URL you specialize.
-  + 2. Put all smali files in "out" directory on the decompile root source directory
-  + 3. Inject smali method calls in the app source code (see section below for more details)
-  + 4. Recompile the app with APKTool
-  + 5. Align and sign APK file
-  + 6. Install APK on your (virtual) device
+This script will generate your own logging smali class with the URL you specialize.
+  + Put all smali files in "out" directory on the decompile root source directory
+  + Inject smali method calls in the app source code (see section below for more details)
+  + Recompile the app thanks to APKTool
+  + Align and sign APK file
+  + Install APK on your (virtual) device
 
 # Methods
 
@@ -35,7 +33,7 @@ Smali code to add a string variable:
 
 	invoke-static {v0, v1}, LRemoteLogger;->add(Ljava/lang/String;Ljava/lang/String;)V
 ```
-For others types, see smali code in "RemoteLogger.java" comments.
+For others types, see smali code in "[RemoteLogger.java](https://github.com/bla5r/RemoteLogger/blob/master/class/java/RemoteLogger.java)" comments.
 
 ## Stack trace
 
@@ -53,7 +51,7 @@ Smali code to send data to your server:
 
 # Server-side
 
-I developed a server monitor for this logger, you can check it out [here](https://github.com/bla5r/RemoteMonitor "RemoteMonitor").
+I've developed a sample server monitor for this logger, you can check it out [here](https://github.com/bla5r/RemoteMonitor). Obviously, you're free to implement yours according to your needs.
 
 When you call the flushing method, the class send a POST request to your server with all of your data in the body (JSON format). This is an example of output:
 ```
@@ -78,3 +76,7 @@ When you call the flushing method, the class send a POST request to your server 
   + "r": Request number (increment at each request)
   + "vars": All variables you logged
   + "stack": All stack traces you logged
+
+# Contact
+
+If you have any question about the project, feel free to contact me on Twitter: [@bla5r](https://twitter.com/bla5r) 
